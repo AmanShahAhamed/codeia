@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background-color: #d3eafd;
+}
+.main-div{
+    height: 80vh;
+    display: flex;
+    margin: 5% 10% 5% 10%;
+    /* background-color: gainsboro; */
+}
+.image-section{
+    height: 80vh;
+    width: 40vw;
+    background-color: #ebeaf8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    height: 250px;
+    border-radius:5%;
+}
+.signup-form{
+    height: 80vh;
+    width: 40vw;
+    background-color:  white;
+}
+h1{
+    text-align: center;
+    margin-top: 2%;
+    color: grey;
+}
+h6{
+    text-align: center;
+    margin-top: 2%;
+    color: rgb(108, 105, 105);
+}
+form{
+    margin-left: 2%;
+}
