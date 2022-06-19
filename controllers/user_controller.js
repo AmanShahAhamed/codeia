@@ -2,7 +2,11 @@
 const User=require('../models/user');
 
 module.exports.profile=function(req,res){
-    res.end('<h1>User Profile is Here..</h1>');
+    return res.render('profile',{
+        tittle:'user_profile',
+        name:'aman shah ahamed',
+        email:'moaslam826@gmail.com'
+    });
 }
 
 module.exports.posts=function(req,res){
@@ -43,9 +47,5 @@ module.exports.create=function(req,res){
 
 //create user sign in session
 module.exports.createSession=function(req,res){
-   return res.render('profile',{
-       tittle:'user_profile',
-       name:'aman',
-       email:'moaslam826@gmail.com'
-   });
+   return res.redirect('/users/profile')
 }
