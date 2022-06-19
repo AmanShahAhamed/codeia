@@ -4,8 +4,7 @@ const User=require('../models/user');
 module.exports.profile=function(req,res){
     return res.render('profile',{
         tittle:'user_profile',
-        name:'aman shah ahamed',
-        email:'moaslam826@gmail.com'
+        user:req.user
     });
 }
 
@@ -15,6 +14,9 @@ module.exports.posts=function(req,res){
 
 //sign-in module
 module.exports.signIn=function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('sign-in',{
          tittle:"Codeial|sign-in"
     });
@@ -22,6 +24,11 @@ module.exports.signIn=function(req,res){
 
 //sign-up-module
 module.exports.signUp=function(req,res){
+   
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('sign-up',{
          tittle:"Codeial|sign-up"
     });

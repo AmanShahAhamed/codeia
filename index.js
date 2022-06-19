@@ -11,6 +11,7 @@ const db=require('./config/mongoose');
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
+const MoongoStore=require('connect-mongo');
 
 
 //setting up our view engine
@@ -18,7 +19,9 @@ app.set('view engine','ejs');
 app.set('views','./views');
 
 //for parsing post request
-app.use(express.urlencoded());
+app.use(express.urlencoded({
+    extended:true
+}));
 
 //for using cookie
 app.use(cookieParser());
@@ -27,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static('assest'))
 
 //creating the functionality of session for user
+//storing session cookie in mongoose db
 app.use(session({
    name:'codeial',
    secret:'blahsomething',
@@ -34,7 +38,17 @@ app.use(session({
    resave:false,
    cookie:{
        maxAge :1000*60*100,
+     },
+     store:new MoongoStore({
+        mongoUrl:'mongodb://localhost/codeial_db',     
+        autoRemove:'disable'
+     },function(err){
+         if(err){
+             console.log('There is error in storing session cookies in moongo db');
+         }
      }
+     
+     )
 }));
 
 //telling express to use passport for auth
