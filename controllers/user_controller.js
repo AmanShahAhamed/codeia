@@ -43,5 +43,9 @@ module.exports.create=function(req,res){
 
 //create user sign in session
 module.exports.createSession=function(req,res){
-    //TODO
+   return res.render('profile',{
+       tittle:'user_profile',
+       name:'aman',
+       email:'moaslam826@gmail.com'
+   });
 }
